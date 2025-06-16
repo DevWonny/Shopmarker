@@ -1,0 +1,21 @@
+div.header-container {
+  height: 100px; // ! 대략적인 수치 -> 추후 수정 예정
+  background-color: gray;
+  padding: 0 50px;
+  gap: 5px;
+
+  div.menu-container {
+    height: 50px;
+  }
+
+  div.search-container {
+    height: fit-content;
+    input {
+      outline: unset;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      padding: 5px 5px;
+      color: #fff;
+    }
+  }
+}
