@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### 주제
 
-## Getting Started
+- 이커머스 관련 작업을 해 본 경험이 없어서 시작하게 된 프로젝트.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 기간
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 시작 : 25년 6월 16일(월)
+- 종료 : -
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 사용 스택
 
-## Learn More
+- Node version 22.14.0
+- Next.js
+- Typescript
+- Tailwind CSS
+- Scss
+- Axios
+- Zustand
+- 토스 페이먼츠 API
+- Fake Store API
+- Firebase Auth
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 페이지 구성(디자인 없이 진행)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Main (상단 배너 + 탭으로 구성된 상품 목록 구현 -> 상품은 아우터, 상의, 하의 , 기타 4항목으로 구성)
+- 상품 상세 페이지
+- 마이 페이지(장바구니 포함)
+- 구입 상세 페이지
+- 결제 관련 페이지
+- 로그인 및 회원가입
