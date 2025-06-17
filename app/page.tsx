@@ -4,10 +4,11 @@ import { Pagination } from 'swiper/modules';
 // style
 import 'swiper/css';
 import 'swiper/css/pagination';
+import '@/styles/app/page.scss';
 
 export default function Main() {
   return (
-    <div className="main-wrap">
+    <div className="main-wrap w-full">
       <Swiper
         className="banner-container"
         slidesPerView={3}
@@ -26,6 +27,7 @@ export default function Main() {
         <SwiperSlide>Slide 9</SwiperSlide>
         <SwiperSlide>Slide 10</SwiperSlide>
       </Swiper>
+
       <div className="product-container"></div>
     </div>
   );
