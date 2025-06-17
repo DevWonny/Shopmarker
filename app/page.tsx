@@ -28,7 +28,16 @@ export default function Main() {
         <SwiperSlide>Slide 10</SwiperSlide>
       </Swiper>
 
-      <div className="product-container"></div>
+      <div className="product-container flex flex-col">
+        <div className="product-tab-container flex justify-end">
+          <button>Outer</button>
+          <button>Top</button>
+          <button>Bottom</button>
+          <button>ETC</button>
+        </div>
+
+        <div className="product-test">Product List</div>
+      </div>
     </div>
   );
 }
