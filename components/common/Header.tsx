@@ -24,7 +24,7 @@ export default function Header() {
     <div className="header-container w-full flex flex-col">
       <div className="menu-container flex items-center justify-between ">
         <div className="logo-container">Logo</div>
-        <div className="auth-container">
+        <div className="auth-container flex ">
           <button onClick={() => onAuthClick('logIn')}>로그인</button>
           <button onClick={() => onAuthClick('signIn')}>회원가입</button>
         </div>

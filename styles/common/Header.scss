@@ -6,6 +6,16 @@ div.header-container {
 
   div.menu-container {
     height: 50px;
+
+    div.auth-container {
+      gap: 20px;
+      button {
+        cursor: pointer;
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
   }
 
   div.search-container {
