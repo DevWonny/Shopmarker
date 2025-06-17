@@ -9,15 +9,25 @@ export default function Header() {
 
   // function
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log("🚀 ~ onSearch ~ e:", e)
     setSearch(e.target.value);
+  };
+
+  const onAuthClick = (type: string) => {
+    if (type === 'logIn') {
+      console.log('Login Form');
+    } else if (type === 'signIn') {
+      console.log('Signup Form');
+    }
   };
 
   return (
     <div className="header-container w-full flex flex-col">
       <div className="menu-container flex items-center justify-between ">
         <div className="logo-container">Logo</div>
-        <div className="auth-container">Auth Container</div>
+        <div className="auth-container">
+          <button onClick={() => onAuthClick('logIn')}>로그인</button>
+          <button onClick={() => onAuthClick('signIn')}>회원가입</button>
+        </div>
       </div>
 
       <div className="search-container w-full flex items-center justify-center">
