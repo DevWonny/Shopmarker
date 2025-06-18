@@ -1,12 +1,25 @@
 'use client';
+import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
+import axios from 'axios';
+// component
+import ProductItem from '@/components/main/ProductItem';
 // style
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '@/styles/app/page.scss';
 
 export default function Main() {
+  // function
+  const test = async () => {
+    const res = await axios.get('https://fakestoreapi.com/products');
+    console.log('🚀 ~ test ~ res:', res);
+    return res;
+  };
+  useEffect(() => {
+    test();
+  }, []);
   return (
     <div className="main-wrap w-full">
       <Swiper
@@ -36,7 +49,9 @@ export default function Main() {
           <button>ETC</button>
         </div>
 
-        <div className="product-test">Product List</div>
+        <div className="product-test">
+          <ProductItem />
+        </div>
       </div>
     </div>
   );
