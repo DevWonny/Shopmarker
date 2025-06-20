@@ -2,24 +2,21 @@
 import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
-import axios from 'axios';
 // component
 import ProductItem from '@/components/main/ProductItem';
+// service
+import { GetProductList } from '@/services/FakeStore';
 // style
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '@/styles/app/page.scss';
 
 export default function Main() {
-  // function
-  const test = async () => {
-    const res = await axios.get('https://fakestoreapi.com/products');
-    console.log('🚀 ~ test ~ res:', res);
-    return res;
-  };
+  // useEffect
   useEffect(() => {
-    test();
+    GetProductList();
   }, []);
+
   return (
     <div className="main-wrap w-full">
       <Swiper
