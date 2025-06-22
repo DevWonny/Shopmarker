@@ -23,14 +23,13 @@ export default function Main() {
 
   // function
   const onTabClick = (value: string) => {
-    console.log('Tab Type : ', value);
     setCurrentCategory(value);
   };
 
   // useEffect
   useEffect(() => {
-    GetProductList();
-  }, []);
+    GetProductList(currentCategory);
+  }, [currentCategory]);
 
   return (
     <div className="main-wrap w-full">

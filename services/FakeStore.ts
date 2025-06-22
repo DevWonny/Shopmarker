@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-export const GetProductList = async () => {
-  const res = await axios.get('https://fakestoreapi.com/products/categories');
+export const GetProductList = async (type: string) => {
+  const res = await axios.get(
+    `https://fakestoreapi.com/products/category/${type}`
+  );
   const { data, status } = res;
 
   if (status !== 200) {
