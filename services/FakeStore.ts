@@ -8,6 +8,6 @@ export const GetProductList = async () => {
     console.log('Fake Store GetProductList Error');
     return;
   }
-
+  console.log(data);
   return data;
 };
