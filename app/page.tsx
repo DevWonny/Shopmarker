@@ -6,6 +6,8 @@ import { Pagination } from 'swiper/modules';
 import ProductItem from '@/components/main/ProductItem';
 // service
 import { GetProductList } from '@/services/FakeStore';
+// interface
+import { ProductItemType } from '@/types/common/ProductItem';
 // style
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -14,6 +16,7 @@ import '@/styles/app/page.scss';
 export default function Main() {
   // State
   const [currentCategory, setCurrentCategory] = useState("men's clothing");
+  const [productList, setProductList] = useState<ProductItemType[]>([]);
   const CategoryType = [
     { label: 'men', value: "men's clothing" },
     { label: 'women', value: "women's clothing" },
@@ -28,7 +31,11 @@ export default function Main() {
 
   // useEffect
   useEffect(() => {
-    GetProductList(currentCategory);
+    const getList = async () => {
+      setProductList(await GetProductList(currentCategory));
+    };
+
+    getList();
   }, [currentCategory]);
 
   return (
@@ -65,8 +72,10 @@ export default function Main() {
           ))}
         </div>
 
-        <div className="product-test">
-          <ProductItem />
+        <div className="product-list">
+          {productList.map(item => (
+            <ProductItem item={item} key={`product-item-${item.id}`} />
+          ))}
         </div>
       </div>
     </div>
