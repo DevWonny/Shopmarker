@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 // component
@@ -12,17 +12,19 @@ import 'swiper/css/pagination';
 import '@/styles/app/page.scss';
 
 export default function Main() {
-  // use state
-  const CategoryType = useRef([
+  // State
+  const [currentCategory, setCurrentCategory] = useState("men's clothing");
+  const CategoryType = [
     { label: 'men', value: "men's clothing" },
     { label: 'women', value: "women's clothing" },
     { label: 'jewelery', value: 'jewelery' },
     { label: 'electronics', value: 'electronics' },
-  ]);
+  ];
 
   // function
   const onTabClick = (value: string) => {
     console.log('Tab Type : ', value);
+    setCurrentCategory(value);
   };
 
   // useEffect
@@ -53,9 +55,10 @@ export default function Main() {
 
       <div className="product-container flex flex-col">
         <div className="product-tab-container flex justify-end">
-          {CategoryType.current.map((category, index) => (
+          {CategoryType.map((category, index) => (
             <button
-              key={`{product-tab-category-${index}}`}
+              key={`product-tab-category-${index}`}
+              className={`${currentCategory === category.value ? 'active' : ''} `}
               onClick={() => onTabClick(category.value)}
             >
               {category.label}

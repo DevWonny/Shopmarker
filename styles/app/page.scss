@@ -12,6 +12,14 @@ div.main-wrap {
       gap: 30px;
       button {
         cursor: pointer;
+        width: 70px;
+        &.active {
+          font-weight: 700;
+        }
+        &:hover {
+          font-weight: 600;
+          color: #d9ba64;
+        }
       }
     }
   }
