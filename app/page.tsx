@@ -72,7 +72,7 @@ export default function Main() {
           ))}
         </div>
 
-        <div className="product-list">
+        <div className="product-list flex">
           {productList.map(item => (
             <ProductItem item={item} key={`product-item-${item.id}`} />
           ))}

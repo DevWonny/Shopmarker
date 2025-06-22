@@ -1,6 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 // interface
 import { ProductItemType } from '@/types/common/ProductItem';
+// style
+import '@/styles/components/ProductItem.scss';
 
 type ProductItemProps = {
   item: ProductItemType;
@@ -8,17 +11,23 @@ type ProductItemProps = {
 
 // ! props : item -> type check 필요
 export default function ProductItem({ item }: ProductItemProps) {
+  // function
+  const onItemClick = (id: number) => {
+    // ! Click 시 페이지 전환 예정
+    console.log('Id : ', id);
+  };
+
   return (
-    <div className="product-item-container">
-      <p>ID : {item.id}</p>
-      <p>Category : {item.category}</p>
-      <p>Description : {item.description}</p>
-      <p>Image : {item.image}</p>
-      <p>Price : {item.price}</p>
+    <div
+      className="product-item-container"
+      onClick={() => onItemClick(item.id)}
+    >
+      <img src={item.image} alt="Product Image" />
+      <p>{item.title}</p>
       <p>
         Rating : {item.rating.rate} / {item.rating.count}
       </p>
-      <p>Title : {item.title}</p>
+      <p>Price : {item.price}</p>
     </div>
   );
 }
