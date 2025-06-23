@@ -70,11 +70,13 @@ export default function ProductItem({ item }: ProductItemProps) {
     >
       <img src={item.image} alt="Product Image" />
       {isMouseOver && (
-        <div className="desc-container absolute">
+        <div className="desc-container absolute flex flex-col items-center justify-center">
           <p className="title">{item.title}</p>
           <p className="rating">평점 : {item.rating.rate}</p>
           <p className="price">
-            가격 : {convertCurrency(item.price, 'USD', 'KRW', rates)}원
+            가격 :{' '}
+            {convertCurrency(item.price, 'USD', 'KRW', rates).toLocaleString()}
+            원
           </p>
         </div>
       )}
