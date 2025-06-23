@@ -72,7 +72,7 @@ export default function Main() {
           ))}
         </div>
 
-        <div className="product-list flex">
+        <div className="product-list flex flex-wrap justify-between">
           {productList.map(item => (
             <ProductItem item={item} key={`product-item-${item.id}`} />
           ))}
