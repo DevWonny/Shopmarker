@@ -21,7 +21,7 @@ interface ExchangeRateMap {
 export default function ProductItem({ item }: ProductItemProps) {
   // state
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const { setId } = useProduct();
+  const { setItem } = useProduct();
 
   // rates
   const rates = {
@@ -30,8 +30,8 @@ export default function ProductItem({ item }: ProductItemProps) {
   };
 
   // function
-  const onItemClick = (id: number) => {
-    setId(id);
+  const onItemClick = (item: ProductItemType) => {
+    setItem(item);
   };
 
   const onMouseOver = (id: number) => {
@@ -66,7 +66,7 @@ export default function ProductItem({ item }: ProductItemProps) {
   return (
     <div
       className="product-item-container flex flex-col justify-between relative"
-      onClick={() => onItemClick(item.id)}
+      onClick={() => onItemClick(item)}
       onMouseOver={() => onMouseOver(item.id)}
       onMouseLeave={() => setIsMouseOver(false)}
     >

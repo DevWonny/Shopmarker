@@ -1,13 +1,16 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
+// type
+import { ProductItemType } from '@/types/common/ProductItem';
+
 interface ProductData {
-  id: number | null;
-  setId: (id: number | null) => void;
+  item: ProductItemType | null;
+  setItem: (item: ProductItemType | null) => void;
 }
 export const useProduct = create<ProductData>()(
   devtools(set => ({
-    id: null,
-    setId: id => set({ id }),
+    item: null,
+    setItem: item => set({ item }),
   }))
 );
