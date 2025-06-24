@@ -9,4 +9,10 @@ div.base-modal-wrap {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(calc(-50% + 100px));
+  padding: 40px 30px 30px;
+  button {
+    top: 10px;
+    right: 30px;
+    cursor: pointer;
+  }
 }

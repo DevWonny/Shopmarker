@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 // store
 import { useProduct } from '@/store/Product';
+// component
+import Detail from './Detail';
 // style
 import '@/styles/components/modal/BaseModal.scss';
 
@@ -24,10 +26,10 @@ export default function BaseModal() {
 
   return (
     <div className={`base-modal-wrap absolute ${isShow ? 'show' : 'hide'}`}>
-      <p>Base Modal</p>
-      {item?.id}
-
-      <button onClick={onClose}>close</button>
+      <button className="absolute" onClick={onClose}>
+        close
+      </button>
+      <Detail />
     </div>
   );
 }
