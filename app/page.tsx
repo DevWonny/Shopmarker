@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import ProductItem from '@/components/main/ProductItem';
 // service
 import { GetProductList } from '@/services/FakeStore';
+// store
+import { useProduct } from '@/store/Product';
 // interface
 import { ProductItemType } from '@/types/common/ProductItem';
 // style
@@ -21,9 +23,11 @@ export default function Main() {
     { label: 'jewelery', value: 'jewelery' },
     { label: 'electronics', value: 'electronics' },
   ];
+  const { setItem } = useProduct();
 
   // function
   const onTabClick = (value: string) => {
+    setItem(null);
     setCurrentCategory(value);
   };
 
