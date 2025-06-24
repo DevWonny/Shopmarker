@@ -1,0 +1,22 @@
+div.detail-container {
+  gap: 20px;
+  img {
+    width: 40%;
+  }
+
+  div.description-container {
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      &.detail-rate {
+        margin-bottom: 5px;
+      }
+
+      &.detail-price {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
