@@ -1,0 +1,7 @@
+div.base-modal-wrap {
+  width: 50%;
+  background-color: red;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(-50% + 100px));
+}
