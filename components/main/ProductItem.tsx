@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import { useState } from 'react';
+// store
+import { useProduct } from '@/store/Product';
 // interface
 import { ProductItemType } from '@/types/common/ProductItem';
 // style
@@ -19,6 +21,7 @@ interface ExchangeRateMap {
 export default function ProductItem({ item }: ProductItemProps) {
   // state
   const [isMouseOver, setIsMouseOver] = useState(false);
+  const { setId } = useProduct();
 
   // rates
   const rates = {
@@ -28,8 +31,7 @@ export default function ProductItem({ item }: ProductItemProps) {
 
   // function
   const onItemClick = (id: number) => {
-    // ! Click 시 페이지 전환 예정
-    console.log('Id : ', id);
+    setId(id);
   };
 
   const onMouseOver = (id: number) => {
