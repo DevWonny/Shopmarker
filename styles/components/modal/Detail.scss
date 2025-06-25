@@ -17,6 +17,24 @@ div.detail-container {
       &.detail-price {
         margin-bottom: 15px;
       }
+
+      &.detail-description {
+        margin-bottom: 30px;
+      }
+    }
+
+    div.button-container {
+      gap: 30px;
+      button {
+        width: 100px;
+        height: 30px;
+        border: 1px solid #fff;
+        border-radius: 8px;
+        &:hover {
+          background-color: #fff;
+          color: #000;
+        }
+      }
     }
   }
 }

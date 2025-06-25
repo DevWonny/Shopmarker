@@ -17,6 +17,11 @@ export default function Detail() {
           <p className="detail-rate text-sm">Rate : {item.rating.rate}</p>
           <p className="detail-price text-sm">Price : {item.price}</p>
           <p className="detail-description ">{item.description}</p>
+
+          <div className="button-container flex">
+            <button>Cart</button>
+            <button>Buy</button>
+          </div>
         </div>
       </div>
     )
