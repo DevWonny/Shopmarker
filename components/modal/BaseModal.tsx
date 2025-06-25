@@ -25,7 +25,10 @@ export default function BaseModal() {
   }, [item]);
 
   return (
-    <div className={`base-modal-wrap absolute ${isShow ? 'show' : 'hide'}`}>
+    <div
+      className={`base-modal-wrap absolute ${isShow ? 'show' : 'hide'}`}
+      onClick={e => e.stopPropagation()}
+    >
       <button className="absolute" onClick={onClose}>
         close
       </button>

@@ -8,12 +8,13 @@ import { useProduct } from '@/store/Product';
 export default function LayoutClient({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const { item } = useProduct();
+  const { item, setItem } = useProduct();
 
   return (
     <div className="relative">
       <div
         className={`modal-container w-full h-screen absolute ${item ? `active` : ''}`}
+        onClick={() => setItem(null)}
       >
         <BaseModal />
       </div>
