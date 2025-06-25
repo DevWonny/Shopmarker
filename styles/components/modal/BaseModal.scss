@@ -8,7 +8,7 @@ div.base-modal-wrap {
   border: 1px solid red;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(calc(-50% + 100px));
+  transform: translateX(-50%) translateY(-50%);
   padding: 40px 30px 30px;
   button {
     top: 10px;
