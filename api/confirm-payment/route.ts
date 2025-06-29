@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   const { paymentKey, orderId, amount } = await req.json();
-
-  const secretKey = process.env.NEXT_PUBLIC_TOSSPAYMENTS_SECRET_KEY;
+  console.log(2);
+  const secretKey = process.env.TOSSPAYMENTS_SECRET_KEY;
   const encode = Buffer.from(`${secretKey}:`).toString('base64');
 
   try {

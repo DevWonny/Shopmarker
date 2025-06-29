@@ -1,59 +1,43 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { loadTossPayments, ANONYMOUS } from '@tosspayments/tosspayments-sdk';
+import { loadTossPayments } from '@tosspayments/tosspayments-sdk';
 import { useEffect, useState } from 'react';
-
-// declare global {
-//   interface Window {
-//     TossPayment: any;
-//   }
-// }
+import { v4 } from 'uuid';
 
 export default function Payment() {
-  const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSSPAYMENTS_CLIENT_KEY;
+  const [amount, setAmount] = useState({
+    currency: 'KRW',
+    value: 50_000,
+  });
   const [widgets, setWidgets] = useState<any>(null);
-  const [ready, setReady] = useState(false);
+  const customerKey = v4();
+  const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSSPAYMENTS_CLIENT_KEY as string;
 
   useEffect(() => {
     async function fetchPaymentWidgets() {
-      const tossPayments = await loadTossPayments(CLIENT_KEY as string);
-      // 비회원 결제
-      const widget = tossPayments.widgets({ customerKey: ANONYMOUS });
-
-      setWidgets(widget);
+      const tossPayments = await loadTossPayments(CLIENT_KEY);
+      const widgets = tossPayments.payment({ customerKey });
+      setWidgets(widgets);
     }
-
     fetchPaymentWidgets();
   }, [CLIENT_KEY]);
 
-  useEffect(() => {
-    async function renderPaymentWidgets() {
-      if (widgets === null) {
-        return;
-      }
-
-      // 결제 금액 설정
-      await widgets.setAmount({ currency: 'KRW', value: 50_000 });
-      await Promise.all([
-        // 결제 UI 렌더링
-        widgets.renderPaymentMethods({
-          selector: '#payment-method',
-          variantKey: 'DEFAULT',
-        }),
-        // 이용약관 UI 렌더링
-        widgets.renderAgreement({
-          selector: '#agreement',
-          variantKey: 'AGREEMENT',
-        }),
-      ]);
-      setReady(true);
+  const onPaymentClick = async () => {
+    try {
+      await widgets.requestPayment({
+        method: 'CARD',
+        amount,
+        orderId: 'HONwhqIqQj5vniCstdVNp',
+        orderName: '토스 티셔츠 외 2건',
+        successUrl: window.location.origin + '/success',
+        failUrl: window.location.origin + '/fail',
+        customerEmail: 'customer123@gmail.com',
+        customerName: '김토스',
+        customerMobilePhone: '01012341234',
+      });
+    } catch (err) {
+      console.error('결제 실패 : ', err);
     }
-
-    renderPaymentWidgets();
-  }, [widgets]);
-  return (
-    <div className="payment-container">
-      <div className="cursor-pointer">test</div>
-    </div>
-  );
+  };
+  return <button onClick={onPaymentClick}>결제하기</button>;
 }
