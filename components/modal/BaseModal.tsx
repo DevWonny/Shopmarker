@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useProduct } from '@/store/Product';
 // component
 import Detail from './Detail';
-import Payment from './Payment';
 // style
 import '@/styles/components/modal/BaseModal.scss';
 
@@ -34,7 +33,6 @@ export default function BaseModal() {
         close
       </button>
       <Detail />
-      <Payment />
     </div>
   );
 }
