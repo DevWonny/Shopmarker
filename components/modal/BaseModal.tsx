@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 // store
 import { useProduct } from '@/store/Product';
 // component
-import Detail from './Detail';
+// import Detail from './Detail';
+import SignUp from './SignUp';
 // style
 import '@/styles/components/modal/BaseModal.scss';
 
@@ -32,7 +33,8 @@ export default function BaseModal() {
       <button className="absolute" onClick={onClose}>
         close
       </button>
-      <Detail />
+      {/* <Detail /> */}
+      <SignUp />
     </div>
   );
 }
