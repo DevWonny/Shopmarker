@@ -5,6 +5,7 @@ import { useProduct } from '@/store/Product';
 // component
 // import Detail from './Detail';
 import SignUp from './SignUp';
+import SignIn from './SignIn';
 // style
 import '@/styles/components/modal/BaseModal.scss';
 
@@ -35,6 +36,7 @@ export default function BaseModal() {
       </button>
       {/* <Detail /> */}
       <SignUp />
+      <SignIn />
     </div>
   );
 }
