@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 // store
 import { useProduct } from '@/store/Product';
 // component
-// import Detail from './Detail';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
+import Detail from './Detail';
+// import SignUp from './SignUp';
+// import SignIn from './SignIn';
 // style
 import '@/styles/components/modal/BaseModal.scss';
 
-export default function BaseModal() {
+export default function BaseModal(type: string) {
   const [isShow, setIsShow] = useState(false);
   const { item, setItem } = useProduct();
 
@@ -34,9 +34,9 @@ export default function BaseModal() {
       <button className="absolute" onClick={onClose}>
         close
       </button>
-      {/* <Detail /> */}
-      <SignUp />
-      <SignIn />
+      <Detail />
+      {/* <SignUp />
+      <SignIn /> */}
     </div>
   );
 }
