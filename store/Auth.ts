@@ -2,7 +2,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-interface ProductData {
+interface AuthData {
   user: any;
   isSignInClick: boolean;
   isSignUpClick: boolean;
@@ -10,7 +10,7 @@ interface ProductData {
   setIsSignInClick: (isSignInClick: boolean) => void;
   setIsSignUpClick: (isSignUpClick: boolean) => void;
 }
-export const useProduct = create<ProductData>()(
+export const useAuth = create<AuthData>()(
   devtools(set => ({
     user: null,
     isSignInClick: false,

@@ -2,29 +2,42 @@
 import { useState, useEffect } from 'react';
 // store
 import { useProduct } from '@/store/Product';
+import { useAuth } from '@/store/Auth';
 // component
 import Detail from './Detail';
-// import SignUp from './SignUp';
-// import SignIn from './SignIn';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
 // style
 import '@/styles/components/modal/BaseModal.scss';
 
-export default function BaseModal(type: string) {
+type BaseModalProps = {
+  type: string;
+};
+
+export default function BaseModal({ type }: BaseModalProps) {
   const [isShow, setIsShow] = useState(false);
   const { item, setItem } = useProduct();
+  const { isSignInClick, isSignUpClick, setIsSignInClick, setIsSignUpClick } =
+    useAuth();
 
   // function
   const onClose = () => {
     setItem(null);
+    setIsSignInClick(false);
+    setIsSignUpClick(false);
   };
 
   useEffect(() => {
-    if (item) {
+    if (item || isSignInClick || isSignUpClick) {
       setIsShow(true);
     } else {
       setIsShow(false);
     }
-  }, [item]);
+  }, [item, isSignInClick, isSignUpClick]);
+
+  useEffect(() => {
+    console.log('🚀 ~ BaseModal ~ type:', type);
+  }, [type]);
 
   return (
     <div
@@ -34,9 +47,13 @@ export default function BaseModal(type: string) {
       <button className="absolute" onClick={onClose}>
         close
       </button>
-      <Detail />
-      {/* <SignUp />
-      <SignIn /> */}
+      {type === 'product' ? (
+        <Detail />
+      ) : type === 'signIn' ? (
+        <SignIn />
+      ) : (
+        <SignUp />
+      )}
     </div>
   );
 }

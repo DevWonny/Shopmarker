@@ -1,11 +1,14 @@
 'use client';
 import { useState } from 'react';
+// store
+import { useAuth } from '@/store/Auth';
 // style
 import '@/styles/common/Header.scss';
 
 export default function Header() {
   // state
   const [search, setSearch] = useState('');
+  const { setIsSignInClick, setIsSignUpClick } = useAuth();
 
   // function
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,8 +18,12 @@ export default function Header() {
   const onAuthClick = (type: string) => {
     if (type === 'logIn') {
       console.log('Login Form');
+      setIsSignInClick(true);
+      setIsSignUpClick(false);
     } else if (type === 'signIn') {
       console.log('Signup Form');
+      setIsSignInClick(false);
+      setIsSignUpClick(true);
     }
   };
 
