@@ -1,0 +1,19 @@
+div.sign-up-form {
+  gap: 20px;
+  input {
+    outline: unset;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  button {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 10px;
+    &:hover {
+      background-color: #aaa;
+      color: #000;
+    }
+  }
+}
