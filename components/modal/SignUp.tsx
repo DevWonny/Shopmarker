@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+// style
+import '@/styles/components/modal/SignUp.scss';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -18,10 +20,21 @@ export default function SignUp() {
     }
   };
 
-  useEffect(() => {
-    setEmail('test@naver.com');
-    setPassword('123123!@#a');
-  }, []);
-
-  return <button onClick={onSignUp}>회원가입</button>;
+  return (
+    <div className="sign-up-form flex col">
+      <input
+        type="text"
+        placeholder="ID를 입력하세요."
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="PW를 입력하세요."
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+      />
+      <button onClick={onSignUp}>회원가입</button>
+    </div>
+  );
 }

@@ -35,10 +35,6 @@ export default function BaseModal({ type }: BaseModalProps) {
     }
   }, [item, isSignInClick, isSignUpClick]);
 
-  useEffect(() => {
-    console.log('🚀 ~ BaseModal ~ type:', type);
-  }, [type]);
-
   return (
     <div
       className={`base-modal-wrap absolute ${isShow ? 'show' : 'hide'}`}
