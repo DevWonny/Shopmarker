@@ -4,6 +4,8 @@
 import { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+// style
+import '@/styles/components/modal/Auth.scss';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -29,17 +31,17 @@ export default function SignIn() {
   }, [user]);
 
   return (
-    <div className="sign-in-container">
+    <div className="sign-in-container flex flex-col">
       <input
         type="email"
         value={email}
-        placeholder="Email"
+        placeholder="ID를 입력하세요."
         onChange={e => setEmail(e.target.value)}
       />
       <input
         type="password"
         value={password}
-        placeholder="Password"
+        placeholder="PW를 입력하세요."
         onChange={e => setPassword(e.target.value)}
       />
       <button onClick={onSignIn}>로그인</button>
