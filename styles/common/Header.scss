@@ -2,14 +2,15 @@ div.header-container {
   height: 60px; // ! 대략적인 수치 -> 추후 수정 예정
   background-color: #aaa;
   padding: 0 50px;
-
-  div.auth-container {
-    gap: 20px;
-    button {
-      cursor: pointer;
-      &:hover {
-        font-weight: 700;
-      }
+  button {
+    cursor: pointer;
+    &:hover {
+      font-weight: 700;
     }
+  }
+
+  div.auth-button-container,
+  div.auth-info {
+    gap: 20px;
   }
 }
