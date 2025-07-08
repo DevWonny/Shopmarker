@@ -11,11 +11,9 @@ export default function Header() {
   // function
   const onAuthClick = (type: string) => {
     if (type === 'logIn') {
-      console.log('Login Form');
       setIsSignInClick(true);
       setIsSignUpClick(false);
     } else if (type === 'signIn') {
-      console.log('Signup Form');
       setIsSignInClick(false);
       setIsSignUpClick(true);
     }

@@ -1,9 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+// store
+import { useAuth } from '@/store/Auth';
 // style
 import '@/styles/components/modal/Auth.scss';
 
@@ -11,7 +12,7 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // ! 임시 작업 -> store로 분류 예정
-  const [user, setUser] = useState<any>(null);
+  const { setUser, setIsSignInClick } = useAuth();
 
   const onSignIn = async () => {
     try {
@@ -21,14 +22,12 @@ export default function SignIn() {
           setUser(u);
         }
       });
+
+      setIsSignInClick(false);
     } catch (err) {
       console.log('Sign In Error! : ', err);
     }
   };
-
-  useEffect(() => {
-    console.log('🚀 ~ SignIn ~ user:', user);
-  }, [user]);
 
   return (
     <div className="sign-in-container flex flex-col">
