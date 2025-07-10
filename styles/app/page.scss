@@ -1,11 +1,5 @@
 div.main-wrap {
-  .banner-container {
-    height: 300px;
-    div.swiper-slide {
-      background-color: #333;
-    }
-  }
-
+  height: calc(100vh - 60px);
   div.product-container {
     padding: 0 50px;
     div.product-tab-container {
@@ -20,6 +14,16 @@ div.main-wrap {
           font-weight: 600;
           color: #d9ba64;
         }
+      }
+    }
+  }
+
+  button {
+    &.delete-account-btn {
+      bottom: 50px;
+      right: 50px;
+      &:hover {
+        font-weight: 600;
       }
     }
   }

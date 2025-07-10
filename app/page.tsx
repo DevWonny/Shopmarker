@@ -6,6 +6,7 @@ import ProductItem from '@/components/main/ProductItem';
 import { GetProductList } from '@/services/FakeStore';
 // store
 import { useProduct } from '@/store/Product';
+import { useAuth } from '@/store/Auth';
 // interface
 import { ProductItemType } from '@/types/common/ProductItem';
 // style
@@ -24,6 +25,7 @@ export default function Main() {
     { label: 'electronics', value: 'electronics' },
   ];
   const { setItem } = useProduct();
+  const { user } = useAuth();
 
   // function
   const onTabClick = (value: string) => {
@@ -41,7 +43,7 @@ export default function Main() {
   }, [currentCategory]);
 
   return (
-    <div className="main-wrap w-full">
+    <div className="main-wrap w-full relative ">
       <div className="product-container flex flex-col">
         <div className="product-tab-container flex justify-end">
           {CategoryType.map((category, index) => (
@@ -61,6 +63,11 @@ export default function Main() {
           ))}
         </div>
       </div>
+      {user && (
+        <button className="delete-account-btn absolute cursor-pointer">
+          회원 탈퇴
+        </button>
+      )}
     </div>
   );
 }
