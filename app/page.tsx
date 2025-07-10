@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { useEffect, useState } from 'react';
+import { getAuth, deleteUser } from 'firebase/auth';
 // component
 import ProductItem from '@/components/main/ProductItem';
 // service
@@ -33,6 +35,25 @@ export default function Main() {
     setCurrentCategory(value);
   };
 
+  const onDeleteClick = async () => {
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+    if (!currentUser) {
+      console.log('로그인 된 상태가 아님!');
+      return;
+    }
+
+    try {
+      await deleteUser(currentUser);
+      console.log('회원탈퇴 성공!');
+    } catch (err: any) {
+      if (err.code === 'auth/requires-recent-login') {
+        console.error('다시 로그인 후 시도해 주세요.');
+      }
+      console.log('Delete Account Error! :', err);
+    }
+  };
+
   // useEffect
   useEffect(() => {
     const getList = async () => {
@@ -64,7 +85,10 @@ export default function Main() {
         </div>
       </div>
       {user && (
-        <button className="delete-account-btn absolute cursor-pointer">
+        <button
+          className="delete-account-btn absolute cursor-pointer"
+          onClick={onDeleteClick}
+        >
           회원 탈퇴
         </button>
       )}
