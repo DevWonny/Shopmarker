@@ -4,6 +4,7 @@
 import { loadTossPayments } from '@tosspayments/tosspayments-sdk';
 import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
+import { useRouter } from 'next/navigation';
 // store
 import { useProduct } from '@/store/Product';
 // style
@@ -17,7 +18,8 @@ export default function Detail() {
   const [payment, setPayment] = useState<any>(null);
   const customerKey = v4();
   const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSSPAYMENTS_CLIENT_KEY as string;
-  const { item } = useProduct();
+  const { item, setItem } = useProduct();
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchPayment() {
@@ -48,6 +50,11 @@ export default function Detail() {
     }
   };
 
+  const onCartClick = () => {
+    setItem(null);
+    router.push('/cart');
+  };
+
   return (
     item && (
       <div className="detail-container flex ">
@@ -59,7 +66,7 @@ export default function Detail() {
           <p className="detail-description ">{item.description}</p>
 
           <div className="button-container flex">
-            <button>Cart</button>
+            <button onClick={onCartClick}>Cart</button>
             <button onClick={onBuyClick}>Buy</button>
           </div>
         </div>
