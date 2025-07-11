@@ -7,6 +7,9 @@ import { v4 } from 'uuid';
 import { useRouter } from 'next/navigation';
 // store
 import { useProduct } from '@/store/Product';
+import { useAuth } from '@/store/Auth';
+// type
+import { ProductItemType } from '@/types/common/ProductItem';
 // style
 import '@/styles/components/modal/Detail.scss';
 
@@ -18,7 +21,8 @@ export default function Detail() {
   const [payment, setPayment] = useState<any>(null);
   const customerKey = v4();
   const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSSPAYMENTS_CLIENT_KEY as string;
-  const { item, setItem } = useProduct();
+  const { item, setItem, setCart, cart } = useProduct();
+  const { user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -51,6 +55,20 @@ export default function Detail() {
   };
 
   const onCartClick = () => {
+    if (!user) {
+      alert('로그인 후 시도해주시기 바랍니다.');
+      return;
+    }
+
+    const cartList: ProductItemType[] = [];
+    if (item) {
+      const isSameCart = cart.findIndex(cartItem => item.id === cartItem.id);
+      if (isSameCart === -1) {
+        cartList.push(item);
+      }
+    }
+
+    setCart(cartList);
     setItem(null);
     router.push('/cart');
   };
