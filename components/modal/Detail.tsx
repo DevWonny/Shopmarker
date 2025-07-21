@@ -37,6 +37,10 @@ export default function Detail() {
 
   // function
   const onBuyClick = async () => {
+    if (!user) {
+      alert('로그인 후 시도해주시기 바랍니다.');
+      return;
+    }
     try {
       await payment.requestPayment({
         method: 'CARD',
