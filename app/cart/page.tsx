@@ -1,6 +1,8 @@
 'use client';
 // store
 import { useProduct } from '@/store/Product';
+// component
+import CartItem from '@/components/cart/cartItem';
 
 export default function Cart() {
   const { cart } = useProduct();
@@ -10,9 +12,7 @@ export default function Cart() {
       <p>Card page</p>
       {cart &&
         cart.map(item => (
-          <div className="cart-item" key={`cart-page-item-${item.id}`}>
-            {item.title}
-          </div>
+          <CartItem key={`cart-item-key-${item.id}`} item={item} />
         ))}
     </div>
   );
