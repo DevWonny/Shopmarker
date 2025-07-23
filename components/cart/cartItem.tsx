@@ -7,6 +7,8 @@ import { ProductItemType } from '@/types/common/ProductItem';
 import { useProduct } from '@/store/Product';
 // utils
 import convertCurrency from '@/utils/ConvertCurrency';
+// style
+import '@/styles/components/CartItem.scss';
 
 // type
 type CartProductItemProps = {
@@ -27,7 +29,7 @@ export default function CartItem({ item }: CartProductItemProps) {
   }, []);
 
   return (
-    <div className="cart-item">
+    <div className="cart-item flex items-center ">
       <img src={item.image} alt="Cart Item Image" />
       <p>{item.title}</p>
       <p>{convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}</p>

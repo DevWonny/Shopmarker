@@ -88,6 +88,7 @@ export default function Detail() {
           <p className="detail-rate text-sm">평점 : {item.rating.rate}</p>
           <p className="detail-price text-sm">
             가격 : {convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}
+            원
           </p>
           <p className="detail-description ">{item.description}</p>
 
