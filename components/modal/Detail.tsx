@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 // store
 import { useProduct } from '@/store/Product';
 import { useAuth } from '@/store/Auth';
+// utils
+import convertCurrency from '@/utils/ConvertCurrency';
 // type
 import { ProductItemType } from '@/types/common/ProductItem';
 // style
@@ -83,8 +85,10 @@ export default function Detail() {
         <img src={item.image} alt="Detail Image" />
         <div className="description-container flex flex-col">
           <h1 className="detail-title text-lg">{item.title}</h1>
-          <p className="detail-rate text-sm">Rate : {item.rating.rate}</p>
-          <p className="detail-price text-sm">Price : {item.price}</p>
+          <p className="detail-rate text-sm">평점 : {item.rating.rate}</p>
+          <p className="detail-price text-sm">
+            가격 : {convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}
+          </p>
           <p className="detail-description ">{item.description}</p>
 
           <div className="button-container flex">

@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { ProductItemType } from '@/types/common/ProductItem';
 // store
 import { useProduct } from '@/store/Product';
+// utils
+import convertCurrency from '@/utils/ConvertCurrency';
 
 // type
 type CartProductItemProps = {
@@ -28,7 +30,7 @@ export default function CartItem({ item }: CartProductItemProps) {
     <div className="cart-item">
       <img src={item.image} alt="Cart Item Image" />
       <p>{item.title}</p>
-      <p>{item.price}</p>
+      <p>{convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}</p>
 
       <button onClick={onCartItemDelete}>Delete</button>
     </div>
