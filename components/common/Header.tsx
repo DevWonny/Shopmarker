@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 // store
 import { useAuth } from '@/store/Auth';
 import { signOut, getAuth } from 'firebase/auth';
@@ -10,6 +11,7 @@ export default function Header() {
   // state
   const { setIsSignInClick, setIsSignUpClick, user, setUser } = useAuth();
   const [isSignIn, setIsSignIn] = useState(false);
+  const router = useRouter();
 
   // function
   const onAuthClick = (type: string) => {
@@ -46,6 +48,7 @@ export default function Header() {
       {isSignIn ? (
         <div className="auth-info flex">
           <p>{user.email}</p>
+          <button onClick={() => router.push('/cart')}>Cart</button>
           <button onClick={onSignOutClick}>Sign Out</button>
         </div>
       ) : (
