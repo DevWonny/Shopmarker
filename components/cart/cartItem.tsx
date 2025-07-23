@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
+import { useEffect } from 'react';
 // interface
 import { ProductItemType } from '@/types/common/ProductItem';
 // store
@@ -18,9 +20,16 @@ export default function CartItem({ item }: CartProductItemProps) {
     setCart(cart.filter(item => item.id !== id));
   };
 
+  useEffect(() => {
+    console.log('🚀 ~ onCartItemDelete ~ item:', item);
+  }, []);
+
   return (
-    <div className="test-cart-item">
+    <div className="cart-item">
+      <img src={item.image} alt="Cart Item Image" />
       <p>{item.title}</p>
+      <p>{item.price}</p>
+
       <button onClick={onCartItemDelete}>Delete</button>
     </div>
   );
