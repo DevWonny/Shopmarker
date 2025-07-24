@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <div className="header-container w-full flex justify-end items-center">
-      {isSignIn ? (
+      {isSignIn && user ? (
         <div className="auth-info flex">
           <p>{user.email}</p>
           <button onClick={() => router.push('/cart')}>Cart</button>

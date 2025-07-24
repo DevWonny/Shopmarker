@@ -1,7 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
+} from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 // store
 import { useAuth } from '@/store/Auth';
@@ -16,6 +20,7 @@ export default function SignIn() {
 
   const onSignIn = async () => {
     try {
+      await setPersistence(auth, browserSessionPersistence);
       await signInWithEmailAndPassword(auth, email, password);
       auth.onAuthStateChanged(u => {
         if (u) {
