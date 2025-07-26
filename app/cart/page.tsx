@@ -23,11 +23,13 @@ export default function Cart() {
   }, []);
   return (
     <div className="card-wrap">
-      <p>Card page</p>
-      {cart &&
+      {cart && cart.length > 0 ? (
         cart.map(item => (
           <CartItem key={`cart-item-key-${item.id}`} item={item} />
-        ))}
+        ))
+      ) : (
+        <div className="none-cart-container">찜 목록이 없습니다.</div>
+      )}
     </div>
   );
 }

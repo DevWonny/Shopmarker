@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 // store
 import { useAuth } from '@/store/Auth';
 import { signOut, getAuth } from 'firebase/auth';
@@ -12,6 +12,7 @@ export default function Header() {
   const { setIsSignInClick, setIsSignUpClick, user, setUser } = useAuth();
   const [isSignIn, setIsSignIn] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   // function
   const onAuthClick = (type: string) => {
@@ -35,6 +36,13 @@ export default function Header() {
     }
   };
 
+  const onLogoClick = () => {
+    if (pathname === '/') {
+      return;
+    }
+    router.push('/');
+  };
+
   useEffect(() => {
     if (user) {
       setIsSignIn(true);
@@ -44,7 +52,10 @@ export default function Header() {
   }, [user]);
 
   return (
-    <div className="header-container w-full flex justify-end items-center">
+    <div className="header-container w-full flex justify-between items-center">
+      <div className="logo cursor-pointer" onClick={onLogoClick}>
+        Shopmarker
+      </div>
       {isSignIn && user ? (
         <div className="auth-info flex">
           <p>{user.email}</p>
