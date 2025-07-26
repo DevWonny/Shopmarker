@@ -35,7 +35,13 @@ export default function SignIn() {
   };
 
   return (
-    <div className="sign-in-container flex flex-col">
+    <form
+      className="sign-in-container flex flex-col"
+      onSubmit={e => {
+        e.preventDefault();
+        onSignIn();
+      }}
+    >
       <input
         type="email"
         value={email}
@@ -48,7 +54,7 @@ export default function SignIn() {
         placeholder="PW를 입력하세요."
         onChange={e => setPassword(e.target.value)}
       />
-      <button onClick={onSignIn}>로그인</button>
-    </div>
+      <button type="submit">로그인</button>
+    </form>
   );
 }
