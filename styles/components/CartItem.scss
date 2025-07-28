@@ -17,6 +17,7 @@ div.cart-item {
   div.info-container {
     gap: 10px;
     p.description {
+      width: calc(100% - 300px);
       color: #afafaf;
     }
   }
