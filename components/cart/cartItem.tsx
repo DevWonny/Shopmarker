@@ -24,17 +24,27 @@ export default function CartItem({ item }: CartProductItemProps) {
     setCart(cart.filter(item => item.id !== id));
   };
 
+  const onCartItemBuy = () => {
+    console.log('Buy!');
+  };
+
   useEffect(() => {
     console.log('🚀 ~ onCartItemDelete ~ item:', item);
   }, []);
 
   return (
-    <div className="cart-item flex items-center ">
+    <div className="cart-item flex items-center relative">
       <img src={item.image} alt="Cart Item Image" />
-      <p>{item.title}</p>
-      <p>{convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}</p>
+      <div className="info-container">
+        <p>{item.title}</p>
+        <p>{item.description}</p>
+        <p>{convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}</p>
+      </div>
 
-      <button onClick={onCartItemDelete}>Delete</button>
+      <div className="button-container absolute flex items-center">
+        <button onClick={onCartItemBuy}>Buy</button>
+        <button onClick={onCartItemDelete}>Delete</button>
+      </div>
     </div>
   );
 }

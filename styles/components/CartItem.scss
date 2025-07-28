@@ -1,7 +1,17 @@
 div.cart-item {
-  background-color: purple;
-  height: 300px;
+  padding: 0 50px;
+  height: 200px;
+  gap: 30px;
+  border-bottom: 1px solid red;
+
   img {
     height: 100%;
+  }
+
+  div.info-container {
+  }
+
+  div.button-container {
+    right: 50px;
   }
 }
