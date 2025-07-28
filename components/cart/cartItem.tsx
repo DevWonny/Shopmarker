@@ -35,15 +35,21 @@ export default function CartItem({ item }: CartProductItemProps) {
   return (
     <div className="cart-item flex items-center relative">
       <img src={item.image} alt="Cart Item Image" />
-      <div className="info-container">
-        <p>{item.title}</p>
-        <p>{item.description}</p>
-        <p>{convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}</p>
+      <div className="info-container flex flex-col">
+        <p className="title text-lg">{item.title}</p>
+        <p className="description text-sm">{item.description}</p>
+        <p className="price text-base">
+          가격 : {convertCurrency(item.price, 'USD', 'KRW').toLocaleString()}원
+        </p>
       </div>
 
-      <div className="button-container absolute flex items-center">
-        <button onClick={onCartItemBuy}>Buy</button>
-        <button onClick={onCartItemDelete}>Delete</button>
+      <div className="button-container absolute flex items-center ">
+        <button className="cursor-pointer" onClick={onCartItemBuy}>
+          Buy
+        </button>
+        <button className="cursor-pointer" onClick={onCartItemDelete}>
+          Delete
+        </button>
       </div>
     </div>
   );

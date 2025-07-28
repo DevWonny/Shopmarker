@@ -1,17 +1,40 @@
 div.cart-item {
-  padding: 0 50px;
+  padding: 10px 50px;
   height: 200px;
   gap: 30px;
-  border-bottom: 1px solid red;
+  background-color: #202020;
+  &:nth-child(odd) {
+    background-color: unset;
+  }
+  &:not(:last-child) {
+    border-bottom: 1px solid #afafaf;
+  }
 
   img {
     height: 100%;
   }
 
   div.info-container {
+    gap: 10px;
+    p.description {
+      color: #afafaf;
+    }
   }
 
   div.button-container {
     right: 50px;
+    width: fit-content;
+    gap: 10px;
+    button {
+      width: 80px;
+      height: 30px;
+      border: 1px solid #afafaf;
+      color: #afafaf;
+      border-radius: 4px;
+      &:hover {
+        background-color: #afafaf;
+        color: #202020;
+      }
+    }
   }
 }
