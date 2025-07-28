@@ -4,7 +4,7 @@
 import { loadTossPayments } from '@tosspayments/tosspayments-sdk';
 import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 // store
 import { useProduct } from '@/store/Product';
 import { useAuth } from '@/store/Auth';
@@ -25,7 +25,7 @@ export default function Detail() {
   const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSSPAYMENTS_CLIENT_KEY as string;
   const { item, setItem, setCart, cart } = useProduct();
   const { user } = useAuth();
-  // const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchPayment() {
@@ -76,8 +76,7 @@ export default function Detail() {
 
     setCart(cartList);
     setItem(null);
-    // router.push('/cart');
-    alert('찜 목록에 추가되었습니다.');
+    router.push('/cart');
   };
 
   return (
