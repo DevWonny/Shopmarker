@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import { useEffect } from 'react';
 // interface
 import { ProductItemType } from '@/types/common/ProductItem';
 // store
@@ -27,10 +26,6 @@ export default function CartItem({ item }: CartProductItemProps) {
   const onCartItemBuy = () => {
     console.log('Buy!');
   };
-
-  useEffect(() => {
-    console.log('🚀 ~ onCartItemDelete ~ item:', item);
-  }, []);
 
   return (
     <div className="cart-item flex items-center relative">
