@@ -22,7 +22,9 @@ export default function Cart() {
     return () => unsubscribe();
   }, []);
   return (
-    <div className="card-wrap">
+    <div
+      className={`card-wrap w-full h-screen ${cart.length > 0 ? '' : 'flex items-center justify-center'}`}
+    >
       {cart && cart.length > 0 ? (
         cart.map(item => (
           <CartItem key={`cart-item-key-${item.id}`} item={item} />
