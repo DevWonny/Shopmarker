@@ -4,14 +4,14 @@
 import { loadTossPayments } from '@tosspayments/tosspayments-sdk';
 import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 // store
 import { useProduct } from '@/store/Product';
 import { useAuth } from '@/store/Auth';
 // utils
 import convertCurrency from '@/utils/ConvertCurrency';
 // type
-import { ProductItemType } from '@/types/common/ProductItem';
+// import { ProductItemType } from '@/types/common/ProductItem';
 // style
 import '@/styles/components/modal/Detail.scss';
 
@@ -23,9 +23,9 @@ export default function Detail() {
   const [payment, setPayment] = useState<any>(null);
   const customerKey = v4();
   const CLIENT_KEY = process.env.NEXT_PUBLIC_TOSSPAYMENTS_CLIENT_KEY as string;
-  const { item, setItem, setCart, cart } = useProduct();
+  const { item, setItem, addToCart, cart } = useProduct();
   const { user } = useAuth();
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     async function fetchPayment() {
@@ -65,18 +65,19 @@ export default function Detail() {
       alert('로그인 후 시도해주시기 바랍니다.');
       return;
     }
-
-    const cartList: ProductItemType[] = [];
     if (item) {
       const isSameCart = cart.findIndex(cartItem => item.id === cartItem.id);
       if (isSameCart === -1) {
-        cartList.push(item);
+        addToCart(item);
+      } else {
+        alert('이미 추가된 상품입니다.');
+        setItem(null);
+        return;
       }
     }
 
-    setCart(cartList);
     setItem(null);
-    router.push('/cart');
+    alert('찜 목록에 추가되었습니다.');
   };
 
   return (

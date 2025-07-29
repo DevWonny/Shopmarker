@@ -15,12 +15,12 @@ type CartProductItemProps = {
 };
 
 export default function CartItem({ item }: CartProductItemProps) {
-  const { cart, setCart } = useProduct();
+  const { removeCart } = useProduct();
 
   // function
   const onCartItemDelete = () => {
     const { id } = item;
-    setCart(cart.filter(item => item.id !== id));
+    removeCart(id);
   };
 
   const onCartItemBuy = () => {

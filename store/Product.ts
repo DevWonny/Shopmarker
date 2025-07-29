@@ -8,7 +8,8 @@ interface ProductData {
   item: ProductItemType | null;
   cart: ProductItemType[];
   setItem: (item: ProductItemType | null) => void;
-  setCart: (cart: ProductItemType[]) => void;
+  addToCart: (item: ProductItemType) => void;
+  removeCart: (id: number) => void;
 }
 export const useProduct = create<ProductData>()(
   devtools(
@@ -17,7 +18,11 @@ export const useProduct = create<ProductData>()(
         item: null,
         cart: [],
         setItem: item => set({ item }),
-        setCart: cart => set({ cart }),
+        addToCart: item => set(state => ({ cart: [...state.cart, item] })),
+        removeCart: id =>
+          set(state => ({
+            cart: state.cart.filter(item => item.id !== id),
+          })),
       }),
       { name: 'product-storage' }
     ),
