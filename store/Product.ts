@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
@@ -10,6 +11,8 @@ interface ProductData {
   setItem: (item: ProductItemType | null) => void;
   addToCart: (item: ProductItemType) => void;
   removeCart: (id: number) => void;
+  // * DB에서 가져오는 경우 사용
+  setCart: (items: any) => void;
   clearCart: () => void;
 }
 export const useProduct = create<ProductData>()(
@@ -24,6 +27,7 @@ export const useProduct = create<ProductData>()(
           set(state => ({
             cart: state.cart.filter(item => item.id !== id),
           })),
+        setCart: items => set({ cart: items }),
         clearCart: () => set({ cart: [] }),
       }),
       { name: 'product-storage' }
