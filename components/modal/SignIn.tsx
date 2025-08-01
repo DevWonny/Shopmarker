@@ -31,6 +31,7 @@ export default function SignIn() {
       setIsSignInClick(false);
     } catch (err) {
       console.log('Sign In Error! : ', err);
+      alert('아이디 및 비밀번호를 체크해주세요!');
     }
   };
 
